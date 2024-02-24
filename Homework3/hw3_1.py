@@ -13,35 +13,56 @@
 #
 #
 # items = {
-#     "ключи": 0.3,
-#     "кошелек": 0.2,
-#     "телефон": 0.5,
+#     "ключи": 0.1,
+#     "кошелек": 1.2,
+#     "телефон": 1.5,
 #     "зажигалка": 0.1
 # }
-# max_weight = 1.0
+# max_weight = 4.0
 # На выходе, например, один из допустимых вариантов может быть таким:
 #
 #
 # {'ключи': 0.3, 'кошелек': 0.2, 'зажигалка': 0.1}
-
 # 1-variant
+import itertools
+from decimal import Decimal
+
+# items = {
+#     "ключи": 0.1,
+#     "кошелек": 1.2,
+#     "телефон": 1.5,
+#     "зажигалка": 0.1,
+#     "фонарь": 1.8,
+#     "спички": 0.1,
+#     "котелок": 2.8,
+#     "топор": 2.2
+# }
+# max_weight = 3.4
 # backpack = {}
 #
 # for item, weight in items.items():
-#     if weight <= max_weight:
-#         backpack[item] = weight
-#         max_weight -= weight
+#     max_weight -= weight
+#     if max_weight > 0:
+#         backpack.setdefault(item, weight)
+#     else:
+#         break
+#     print(backpack)
+#     print(max_weight)
 
 # 2-variant
 from decimal import Decimal
 
 items = {
-    "ключи": 0.3,
-    "кошелек": 0.3,
-    "телефон": 0.8,
-    "зажигалка": 0.1
+    "ключи": 0.1,
+    "кошелек": 0.2,
+    "телефон": 0.5,
+    "зажигалка": 0.1,
+    "фонарь": 0.8,
+    "спички": 0.1,
+    "котелок": 2.8,
+    "топор": 2.2
 }
-max_weight = 0.7
+max_weight = 3.4
 
 max_weight_items = Decimal(str(max_weight))
 backpack = {}
@@ -52,7 +73,4 @@ for i in items:
         max_weight_items -= Decimal(str(items.get(i)))
     else:
         continue
-# print(backpack)
-
-
-
+print(backpack)
